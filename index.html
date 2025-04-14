@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>QTuxathon 2.0</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon_io/favicon.ico">
+
+    <style>
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #1a1a2e;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+        
+        .masthead {
+            position: relative;
+            background: linear-gradient(45deg, rgba(26, 26, 46, 0.7), rgba(0, 0, 0, 0.5));
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 165, 0, 0.7);
+        }
+
+        .title-text {
+            animation: fadeInDown 1.5s ease;
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .sub-heading {
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Enhanced About Section Styling */
+        .about-section {
+            background: transparent;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            margin: 20px auto;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .about-section h1 {
+            font-family: 'Varela Round', sans-serif;
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-section p {
+            font-family: 'Nunito', sans-serif;
+            color: #fff;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Enhanced Schedule Section Styling */
+        .schedule-section {
+            background: #1a1a2e;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        .schedule-section h1 {
+            font-family: 'Varela Round', sans-serif;
+            color: #ff9500;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .schedule {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        #schedSat, #schedSun {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        #schedSat:hover, #schedSun:hover {
+            transform: scale(1.02);
+        }
+
+        #schedSat h3, #schedSun h3 {
+            font-family: 'Varela Round', sans-serif;
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .table {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .table th, .table td {
+            border: none;
+            padding: 10px;
+            color: #fff;
+            text-align: left;
+        }
+
+        .table th {
+            font-weight: bold;
+            width: 30%;
+        }
+
+        .table td {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .table tr:hover td {
+            background: rgba(8, 26, 72, 0.2);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .schedule {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            #schedSat, #schedSun {
+                width: 100%;
+            }
+
+            .schedule-section h1 {
+                font-size: 2rem;
+            }
+
+            #schedSat h3, #schedSun h3 {
+                font-size: 1.3rem;
+            }
+
+            .table {
+                font-size: 0.9rem;
+            }
+
+            .table th, .table td {
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .schedule-section {
+                padding: 20px 10px;
+            }
+
+            .table {
+                font-size: 0.85rem;
+            }
+
+            .table th, .table td {
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div id="navbar-container" class="container">
+            <div id="navbar-top-menu">
+                <div class="d-flex align-items-center justify-content-between">
+                    <a class="navbar-brand js-scroll-trigger" href="index.html">
+                        <div class="title-icon"></div>
+                    </a>
+                    <button class="navbar-toggler nexa" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        Menu
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul id="navbar-buttons" class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger nexa" href="">Apply</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger nexa" href="faqs.html">FAQs</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger nexa" href="prob.html">Problem Statements</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger nexa" href="sponsors.html">Sponsors</a></li>
+                    <li class="nav-item" id="team"><a class="nav-link js-scroll-trigger nexa" href="teams.html">Team</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="masthead">
+        <div class="container d-flex h-100 align-items-center">
+            <div class="mx-auto text-center no-select">
+                <h1 class="mx-auto my-0 title-text">QTuxathon 2.0</h1>
+                <br><br>
+                <h2 class="orange mx-auto mt-2 mb-1 sub-heading" style="width: 100%;">28<sup>th</sup>-29<sup>th</sup> April 2025</h2>
+                <br>
+                <h2 class="white mx-auto mt-2 mb-3 sub-heading" style="width: 100%;">Sri Sairam Institute Of Technology</h2>
+                <div id="button-box">
+                    <a href="" class="btn btn-primary js-scroll-trigger" style="z-index: 1; position: relative;">Apply Now!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="text-center">
+        <!-- About Section -->
+        <section class="about-section">
+            <h1 class="sub-heading">About</h1>
+            <div class="container nexa">
+                <p class="white bold" style="text-align: center;">
+                    QTUXATHON 2.0 is a 24-hour, non-stop hackathon by the Department of CSE – Cyber Security. It’s all about pushing your limits, solving tough challenges, and working with a team to create something epic. Expect sleepless nights, intense coding, and a lot of fun along the way.
+<br>
+                    This is not your average event—it's raw, it's chaotic, and it’s here to test your skills under pressure. If you’re ready for the grind, we’ve got you covered with food, entertainment, and a chance to make an impact.                </p>
+            </div>
+        </section>
+
+        <!-- Schedule Section
+        <section class="schedule-section">
+            <h1 class="sub-heading">Schedule</h1>
+            <div class="schedule">
+                <div id="schedSat">
+                    <h3>Monday 28th</h3>
+                    <table class="table table-hover">
+                        <tr><th>09:30</th><td>Check-In Opens</td></tr>
+                        <tr><th>10:00</th><td>Opening Ceremony</td></tr>
+                        <tr><th>11:00</th><td>Hackathon Kicks Off!</td></tr>
+                        <tr><th>11:40</th><td>Mentoring Session 01</td></tr>
+                        <tr><th>12:10</th><td>oru chinna idaiveli </td></tr>
+                        <tr><th>12:35</th><td>Round 01 : Make your asses ready!</td></tr>
+                        <tr><th>13:10</th><td>Lunch</td></tr>
+                        <tr><th>14:00</th><td>Development stage 01</td></tr>
+                        <tr><th>15:10</th><td>Mentoring Session 02</td></tr>
+                        <tr><th>16:40</th><td>Round 02 : Time to Go Hard! Hell Yeah!</td></tr>
+                        <tr><th>17:10</th><td>Coffee time !</td></tr>
+                        <tr><th>17:35</th><td>Development stage 02</td></tr>
+                        <tr><th>20:00</th><td>Dinner</td></tr>
+                        <tr><th>22:00</th><td>Mentoring Session 03</td></tr>
+                        <tr><th>23:00</th><td>Fun Activities & Chill Zone</td></tr>
+                    </table>
+                </div>
+                <div id="schedSun">
+                    <h3>Tuesday 29th</h3>
+                    <table class="table table-hover">
+                        <tr><th>02:00</th><td>Round 03 : Go Harder! For Final Stretch! 💪</td></tr>
+                        <tr><th>03:00</th><td>Coffee Time!</td></tr>
+                        <tr><th>06:00</th><td>Refresh & Reset 🛁</td></tr>
+                        <tr><th>07:40</th><td>Breakfast</td></tr>
+                        <tr><th>08:20</th><td>Final Review ! </td></tr>
+                        <tr><th>10:00</th><td>Valedictory Ceremony</td></tr>
+                        <tr><th>11:00</th><td>Venue Closed</td></tr>
+                    </table>
+                </div>
+            </div>
+        </section> -->
+
+        
+        <!-- Schedule Section -->
+
+        <section class="schedule-section">
+            <h1 class="sub-heading">Schedule</h1>
+            <div class="schedule">
+                <div id="schedSat">
+                    <h3>Monday 28th</h3>
+                    <table class="table table-hover">
+                        <tr><th>09:30</th><td>Check-In Opens</td></tr>
+                        <tr><th>10:00</th><td>Opening Ceremony</td></tr>
+                        <tr><th>11:00</th><td>Hackathon Blast-Off 🚀</td></tr>
+                        <tr><th>11:40</th><td>Mentor Squad Assembles</td></tr>
+                        <tr><th>12:10</th><td>oru chinna chill session 😌</td></tr>
+                        <tr><th>12:35</th><td>Round 01: Let the Chaos Begin 🔥</td></tr>
+                        <tr><th>13:10</th><td>Lunch Break (Fuel Up!)</td></tr>
+                        <tr><th>14:00</th><td>Dev Time: Code like a Beast 👾</td></tr>
+                        <tr><th>15:10</th><td>Mentor Session 2.0</td></tr>
+                        <tr><th>16:40</th><td>Round 02: Show Us What You Got 😤</td></tr>
+                        <tr><th>17:10</th><td>Coffee O’Clock ☕</td></tr>
+                        <tr><th>17:35</th><td>Dev Time Continues...</td></tr>
+                        <tr><th>20:00</th><td>Dinner Break ( Sapdapolama ? )👀</td></tr>
+                        <tr><th>22:00</th><td>Late Night Mentoring</td></tr>
+                        <tr><th>23:00</th><td>Fun & Games (Non-Coding Madness)</td></tr>
+                    </table>
+                </div>
+                <div id="schedSun">
+                    <h3>Tuesday 29th</h3>
+                    <table class="table table-hover">
+                        <tr><th>02:00</th><td>Round 03: Sleepless Brains Go Brr 🧠</td></tr>
+                        <tr><th>03:00</th><td>Late Night Coffee & Vibes</td></tr>
+                        <tr><th>06:00</th><td>Shower Time / Freshen Up 🚿</td></tr>
+                        <tr><th>07:40</th><td>Breakfast (Almost There!)</td></tr>
+                        <tr><th>08:20</th><td>Final Touches & Panic Mode 💻⚡</td></tr>
+                        <tr><th>10:00</th><td>Valedictory Ceremony 🎤</td></tr>
+                        <tr><th>11:00</th><td>Peace Out – Venue Closes 🫡</td></tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section class="schedule-section">
+            <h1 class="sub-heading">Schedule</h1>
+            <div class="schedule">
+                <div id="schedSat">
+                    <h3>Monday 28th</h3>
+                    <table class="table table-hover">
+                        <tr><th>09:30</th><td>Check-In Opens (Get your lazy ass in)</td></tr>
+                        <tr><th>10:00</th><td>Opening Ceremony (Yeah, sit tight and pretend to listen)</td></tr>
+                        <tr><th>11:00</th><td>Hackathon Blast-Off 🚀 (Code till your eyes bleed)</td></tr>
+                        <tr><th>11:40</th><td>Mentor Squad Assembles (They tryna save your broken code)</td></tr>
+                        <tr><th>12:10</th><td>oru chinna chill session 😌 (before the storm hits)</td></tr>
+                        <tr><th>12:35</th><td>Round 01: Make your asses ready! 💥</td></tr>
+                        <tr><th>13:10</th><td>Lunch Break (Shove some food down your throat)</td></tr>
+                        <tr><th>14:00</th><td>Dev Time: No Sleep, Just Code 👾</td></tr>
+                        <tr><th>15:10</th><td>Mentor Round 2: They're back... again</td></tr>
+                        <tr><th>16:40</th><td>Round 02: Time to Go Hard! Fuck Yeah! 🔥</td></tr>
+                        <tr><th>17:10</th><td>Coffee Time! (or just inject caffeine)</td></tr>
+                        <tr><th>17:35</th><td>Code, cry, repeat... (Dev continues)</td></tr>
+                        <tr><th>20:00</th><td>Dinner Break (Survive another few hours)</td></tr>
+                        <tr><th>22:00</th><td>Mentor Therapy Session 3 (They’re not therapists, but they’ll try)</td></tr>
+                        <tr><th>23:00</th><td>Fun & Games (a.k.a chaos with prizes)</td></tr>
+                    </table>
+                </div>
+                <div id="schedSun">
+                    <h3>Tuesday 29th</h3>
+                    <table class="table table-hover">
+                        <tr><th>02:00</th><td>Round 03: Yea Fuck! Go Harder! 😤</td></tr>
+                        <tr><th>03:00</th><td>Late Night Coffee & Existential Crisis</td></tr>
+                        <tr><th>06:00</th><td>Refreshments (KULIYAL TIME – Don’t smell like code)</td></tr>
+                        <tr><th>07:40</th><td>Breakfast (Final energy dump)</td></tr>
+                        <tr><th>08:20</th><td>Final Review – Patch that shitty bug 😵</td></tr>
+                        <tr><th>10:00</th><td>Valedictory Ceremony 🎤 (Look alive for the photos)</td></tr>
+                        <tr><th>11:00</th><td>Venue Closed (GTFO and go sleep for a week)</td></tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+         -->
+
+        
+
+
+        <section class="diagonal-section">
+            <div class="mx-auto diagonal-section-content">
+                <div class="container nexa">
+                    <p class="white bold">Applications are now open. Click on "apply" at the top.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="diagonal-section black-bg" style="height: 4em; opacity: 1;"></section>
+
+        <section class="footer-section black-bg">
+            <div style="padding-top: 0">
+                <div class="small text-center white">
+                    <div class="social d-flex justify-content-center"></div>
+                    <div class="white mb-4 nexa">
+                        Copyright © QTuxathon2.0 2024
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts -->
+    <script src="js/grayscale.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- Particle library -->
+    <script src="particles/particles.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ff9500"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ff9500",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out"
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>

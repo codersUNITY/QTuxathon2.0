@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>QTuxathon 2.0</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon_io/favicon.ico">
+
+    <style>
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #1a1a2e;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+
+        /* Problem Statements Section Styling */
+        .problem-statements-section {
+            background: #1a1a2e;
+            padding: 40px 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        .problem-statements-section h1 {
+            font-family: 'Varela Round', sans-serif;
+            color: #ff9500;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .domain-section {
+            margin-bottom: 40px;
+        }
+
+        .domain-section h2 {
+            font-family: 'Varela Round', sans-serif;
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ff9500;
+            padding-bottom: 10px;
+        }
+
+        .problem-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 149, 0, 0.3);
+        }
+
+        .problem-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .problem-header h3 {
+            font-family: 'Nunito', sans-serif;
+            color: #ff9500;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .problem-header .toggle-icon {
+            font-size: 1.2rem;
+            color: #ff9500;
+            transition: transform 0.3s ease;
+        }
+
+        .problem-header .toggle-icon.open {
+            transform: rotate(180deg);
+        }
+
+        .problem-content {
+            display: none;
+            padding: 20px;
+            font-family: 'Nunito', sans-serif;
+            color: #fff;
+            font-size: 1rem;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .problem-content.open {
+            display: block;
+            max-height: 1000px; /* Adjust based on content size */
+            padding: 20px;
+        }
+
+        .problem-content ul {
+            padding-left: 20px;
+            margin: 10px 0 0 0;
+        }
+
+        .problem-content ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .problem-statements-section {
+                padding: 20px 10px;
+            }
+
+            .problem-statements-section h1 {
+                font-size: 2rem;
+            }
+
+            .domain-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .problem-header h3 {
+                font-size: 1rem;
+            }
+
+            .problem-content {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div id="navbar-container" class="container">
+            <div id="navbar-top-menu">
+                <div class="d-flex align-items-center justify-content-between">
+                    <a class="navbar-brand js-scroll-trigger" href="index.html">
+                        <div class="title-icon"></div>
+                    </a>
+                    <button class="navbar-toggler nexa" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        Menu
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul id="navbar-buttons" class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger nexa" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger nexa" href="">Apply</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger nexa" href="faqs.html">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger nexa" href="prob.html">Problem Statements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger nexa" href="sponsors.html">Sponsors</a>
+                    </li>
+                    <li class="nav-item" id="team">
+                        <a class="nav-link js-scroll-trigger nexa" href="teams.html">Team</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="text-center">
+        <section>
+            <h1 class="sub-heading diagonal-text orange" style="padding: 6em 0 4em 0;">Problem Statements</h1>
+        </section>
+
+        <section class="problem-statements-section">
+            <h1>Explore the Challenges</h1>
+
+            <!-- Cybersecurity and Forensics -->
+            <div class="domain-section">
+                <h2>Cybersecurity and Forensics</h2>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT101: Cyber Incident Crawler and Analyzer</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem involves creating a framework to crawl and collect cyber incident data from various platforms (e.g., news sites, forums, social media) and analyze it to provide real-time feeds for monitoring and response.</p>
+                        <p><strong>Expected Outcome:</strong> A working prototype of a cyber incident crawler that collects data, analyzes it for trends, and provides a real-time feed or dashboard with actionable insights.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Identify platforms to crawl for cyber incident data (e.g., Twitter, Reddit, security blogs).</li>
+                            <li>Develop a web crawler using a language like Python (e.g., with Scrapy or BeautifulSoup).</li>
+                            <li>Implement a basic analysis pipeline to categorize incidents (e.g., by type, severity).</li>
+                            <li>Create a simple dashboard to display real-time feeds of incidents.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT102: AI-Powered Digital Forensics Tool</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem focuses on designing a digital forensics tool that automates evidence collection, analysis, and reporting, using AI/ML for anomaly detection and pattern recognition in forensic data.</p>
+                        <p><strong>Expected Outcome:</strong> A functional digital forensics tool that can collect evidence (e.g., logs, files), analyze it using AI/ML, and generate a report with detected anomalies or patterns.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Choose a programming language and framework for the tool (e.g., Python with TensorFlow for ML).</li>
+                            <li>Develop a module to collect evidence from a system (e.g., file system logs, network traffic).</li>
+                            <li>Implement an AI/ML model to detect anomalies (e.g., unusual file access patterns).</li>
+                            <li>Create a reporting module to summarize findings in a user-friendly format.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT103: Data Recovery from XFS and Btrfs Filesystems</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem involves developing techniques to recover deleted data and metadata from XFS and Btrfs filesystems, ensuring the integrity of the recovered data for forensic investigations.</p>
+                        <p><strong>Expected Outcome:</strong> A tool or script that can recover deleted files and metadata from XFS and Btrfs filesystems, with a report on the integrity of the recovered data.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Research the structure of XFS and Btrfs filesystems and their data recovery challenges.</li>
+                            <li>Use existing tools (e.g., TestDisk, PhotoRec) or develop a custom script in a language like Python or C.</li>
+                            <li>Test the recovery process on a sample filesystem with deleted files.</li>
+                            <li>Verify the integrity of recovered data and document the process.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT104: Agent-less Vulnerability and Network Scanner</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem focuses on building an agent-less vulnerability and network scanner for Windows and Linux systems to identify security weaknesses without requiring software installation on target systems.</p>
+                        <p><strong>Expected Outcome:</strong> A working scanner that can identify vulnerabilities and network issues on Windows/Linux systems without installing agents, with a report of findings.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Research agent-less scanning techniques (e.g., using Nmap, OpenVAS).</li>
+                            <li>Develop a script or tool to scan for vulnerabilities (e.g., open ports, outdated software).</li>
+                            <li>Test the scanner on a virtualized Windows/Linux environment.</li>
+                            <li>Generate a report summarizing the vulnerabilities and network issues found.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT105: Phishing and Vulnerability Detection Tool</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem involves developing a browser extension for phishing and vulnerability detection to protect users from malicious websites and attacks.</p>
+                        <p><strong>Expected Outcome:</strong> A functional browser extension that can detect phishing attempts and vulnerabilities in websites, alerting users to potential threats.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Choose a browser to develop the extension for (e.g., Chrome, Firefox).</li>
+                            <li>Develop a basic extension using JavaScript to analyze website URLs and content.</li>
+                            <li>Implement a phishing detection mechanism (e.g., using a blacklist or ML model).</li>
+                            <li>Test the extension on known phishing sites and document its effectiveness.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT106: Bug Hunting and API Development</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem focuses on creating a tool for bug hunting and building an API to automate the process of identifying and reporting vulnerabilities in applications.</p>
+                        <p><strong>Expected Outcome:</strong> A tool that can identify bugs in a given application and an API that allows users to query and report vulnerabilities programmatically.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Choose a target application or website to test for bugs.</li>
+                            <li>Develop a bug hunting tool using a language like Python (e.g., with libraries like requests).</li>
+                            <li>Build a simple API (e.g., using Flask or Node.js) to report vulnerabilities.</li>
+                            <li>Test the tool and API with a sample application and document the results.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT107: IoT Security Hunt (IDS for IoT)</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem involves designing an Intrusion Detection System (IDS) specifically for IoT devices to detect and mitigate security threats in IoT environments.</p>
+                        <p><strong>Expected Outcome:</strong> A working IDS prototype for IoT devices that can detect common threats (e.g., unauthorized access, DDoS) and alert users.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Research common IoT security threats and IDS techniques.</li>
+                            <li>Choose a platform to simulate IoT devices (e.g., Raspberry Pi, Arduino).</li>
+                            <li>Develop a basic IDS using a language like Python to monitor network traffic.</li>
+                            <li>Test the IDS with simulated attacks and document its performance.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT108: DNS Spoofing and MITM API</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem focuses on building an API to simulate and detect DNS spoofing and Man-in-the-Middle (MITM) attacks for educational and defensive purposes.</p>
+                        <p><strong>Expected Outcome:</strong> A functional API that can simulate DNS spoofing and MITM attacks and provide detection mechanisms, with a demo of its capabilities.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Research DNS spoofing and MITM attack techniques.</li>
+                            <li>Develop an API using a framework like Flask or Node.js to simulate these attacks.</li>
+                            <li>Implement detection mechanisms (e.g., checking for DNS inconsistencies).</li>
+                            <li>Test the API in a controlled environment and document the results.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT109: Encrypted File Sharing System</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem involves developing a local file encryption and sharing system that demonstrates encryption processes and securely shares files between users.</p>
+                        <p><strong>Expected Outcome:</strong> A working prototype of a file encryption and sharing system that encrypts files, shares them locally, and displays the encryption process to users.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Choose an encryption algorithm (e.g., AES) and a programming language (e.g., Python).</li>
+                            <li>Develop a script to encrypt and decrypt files using the chosen algorithm.</li>
+                            <li>Create a simple interface to share encrypted files locally (e.g., via a local server).</li>
+                            <li>Display the encryption process (e.g., key generation, encrypted data) to users.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT110: Dark Web Threat Intelligence Dashboard</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem focuses on creating a system that monitors the dark web for leaked databases, passwords, illegal threats, etc., and provides a summary dashboard for cyber intelligence (e.g., for law enforcement).</p>
+                        <p><strong>Expected Outcome:</strong> A functional dark web monitoring system that collects data and presents it in a dashboard with summaries of threats, leaks, and other illegal activities.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Research dark web access methods (e.g., using Tor) and ethical considerations.</li>
+                            <li>Develop a script to crawl dark web sites for specific data (e.g., using Python with Tor).</li>
+                            <li>Analyze the collected data to identify threats, leaks, or illegal activities.</li>
+                            <li>Create a dashboard (e.g., using Flask or Django) to display the summarized data.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT111: AI-Powered DDoS Protection</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem involves developing an AI-powered system for real-time DDoS threat detection and automated defense to protect networks from distributed denial-of-service attacks.</p>
+                        <p><strong>Expected Outcome:</strong> A working prototype of an AI-powered DDoS protection system that can detect attacks in real-time and implement automated defense mechanisms.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Research DDoS attack patterns and AI-based detection techniques.</li>
+                            <li>Develop an AI model (e.g., using Python with TensorFlow) to detect DDoS attacks.</li>
+                            <li>Implement a defense mechanism (e.g., rate limiting, IP blocking) triggered by the AI model.</li>
+                            <li>Test the system with simulated DDoS attacks and document its effectiveness.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quantum Computing -->
+            <div class="domain-section">
+                <h2>Quantum Computing</h2>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT112: Quantum Machine Learning for Classification</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem involves simulating quantum machine learning techniques to perform simple classification tasks, exploring the potential of quantum computing in ML.</p>
+                        <p><strong>Expected Outcome:</strong> A working simulation of a quantum machine learning model that can perform a simple classification task (e.g., binary classification) using a quantum framework.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Choose a quantum programming framework (e.g., Qiskit, Cirq).</li>
+                            <li>Implement a simple quantum circuit for a classification task (e.g., using a variational quantum classifier).</li>
+                            <li>Train the model on a small dataset (e.g., Iris dataset with two classes).</li>
+                            <li>Evaluate the model's performance and compare it to classical ML methods.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT113: Basic Quantum Error Detection</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem focuses on implementing a basic quantum error detection mechanism to identify and correct errors in quantum computations, addressing the challenges of noise and decoherence in quantum systems.</p>
+                        <p><strong>Expected Outcome:</strong> A working prototype or simulation of a quantum error detection system that can identify and correct at least one type of quantum error (e.g., bit-flip or phase-flip errors) using a quantum programming framework like Qiskit or Cirq.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Research common quantum errors and error detection codes (e.g., Shor code, Steane code).</li>
+                            <li>Choose a quantum programming framework to simulate a quantum circuit.</li>
+                            <li>Implement a simple error detection mechanism and test it with a small quantum circuit.</li>
+                            <li>Document the results and demonstrate the effectiveness of the error detection.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT114: Quantum Key Distribution or Error Correction</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem involves developing a system for quantum key distribution (QKD) or quantum error correction to enhance the security and reliability of quantum communications, focusing on practical implementation challenges.</p>
+                        <p><strong>Expected Outcome:</strong> A functional QKD system (e.g., BB84 protocol) or an error correction system implemented in a quantum programming framework, with a demonstration of secure key exchange or error correction.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Choose between QKD or error correction based on your team's expertise.</li>
+                            <li>For QKD: Implement the BB84 protocol using a quantum programming framework.</li>
+                            <li>For error correction: Implement a quantum error correction code and simulate its performance.</li>
+                            <li>Test the system with simulated noise and document the results.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blockchain -->
+            <div class="domain-section">
+                <h2>Blockchain</h2>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT115: Blockchain-Based Course Platform</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem involves creating a blockchain-based course platform where students can earn tokens by completing courses or challenges, incorporating a play-to-earn reward system to incentivize learning.</p>
+                        <p><strong>Expected Outcome:</strong> A working prototype of a blockchain-based course platform with a token reward system, where students can earn tokens by completing courses or participating in gamified challenges.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Choose a blockchain platform (e.g., Ethereum, Binance Smart Chain) for token implementation.</li>
+                            <li>Design a simple course platform with a few sample courses or challenges.</li>
+                            <li>Implement a smart contract to manage token rewards for course completion or challenge participation.</li>
+                            <li>Create a user interface for students to interact with the platform and view their token balance.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT116: Blockchain-Based Insurance Claiming System</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem focuses on developing a blockchain-based system for insurance claims, ensuring transparency, security, and efficiency in the claiming process using smart contracts.</p>
+                        <p><strong>Expected Outcome:</strong> A functional prototype of a blockchain-based insurance claiming system where users can submit claims, and the system processes them automatically using smart contracts.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Choose a blockchain platform for smart contract deployment (e.g., Ethereum).</li>
+                            <li>Design a simple insurance claiming process (e.g., user submits a claim, smart contract verifies, and disburses funds).</li>
+                            <li>Implement the smart contract to automate the claim verification and payout process.</li>
+                            <li>Create a user interface for users to submit claims and view the status.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Others -->
+            <div class="domain-section">
+                <h2>Others</h2>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT117: CopBotChatbox</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem involves designing a chatbot (CopBotChatbox) to bridge the gap between citizens and police, facilitating communication, reporting, and assistance in a user-friendly manner.</p>
+                        <p><strong>Expected Outcome:</strong> A working chatbot prototype that allows citizens to report incidents, ask questions, or seek assistance from the police, with basic natural language processing capabilities.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Choose a chatbot development platform (e.g., Dialogflow, Microsoft Bot Framework).</li>
+                            <li>Design conversation flows for common scenarios (e.g., reporting a crime, asking for emergency contacts).</li>
+                            <li>Implement basic NLP to understand user queries and provide relevant responses.</li>
+                            <li>Test the chatbot with sample interactions and refine the conversation flows.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <h3>QT118: Open Innovation</h3>
+                        <span class="toggle-icon fas fa-chevron-down"></span>
+                    </div>
+                    <div class="problem-content">
+                        <p><strong>Scope:</strong> This problem involves designing a chatbot (CopBotChatbox) to bridge the gap between citizens and police, facilitating communication, reporting, and assistance in a user-friendly manner.</p>
+                        <p><strong>Expected Outcome:</strong> A working chatbot prototype that allows citizens to report incidents, ask questions, or seek assistance from the police, with basic natural language processing capabilities.</p>
+                        <p><strong>What to Do:</strong></p>
+                        <ul>
+                            <li>Choose a chatbot development platform (e.g., Dialogflow, Microsoft Bot Framework).</li>
+                            <li>Design conversation flows for common scenarios (e.g., reporting a crime, asking for emergency contacts).</li>
+                            <li>Implement basic NLP to understand user queries and provide relevant responses.</li>
+                            <li>Test the chatbot with sample interactions and refine the conversation flows.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="diagonal-section black-bg" style="height: 4em; opacity: 1;"></section>
+
+        <section class="footer-section black-bg">
+            <div style="padding-top: 0">
+                <div class="small text-center white">
+                    <div class="social d-flex justify-content-center"></div>
+                    <div class="white mb-4 nexa">
+                        Copyright © QTuxathon2.0 2024
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts -->
+    <script src="js/grayscale.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- Particle library -->
+    <script src="particles/particles.js"></script>
+    <script src="particles/app.js"></script>
+    <!-- Accordion Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const problemHeaders = document.querySelectorAll('.problem-header');
+
+            problemHeaders.forEach(header => {
+                header.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.toggle-icon');
+
+                    // Close other open contents
+                    document.querySelectorAll('.problem-content.open').forEach(openContent => {
+                        if (openContent !== content) {
+                            openContent.classList.remove('open');
+                            openContent.previousElementSibling.querySelector('.toggle-icon').classList.remove('open');
+                        }
+                    });
+
+                    // Toggle the clicked content
+                    content.classList.toggle('open');
+                    icon.classList.toggle('open');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
